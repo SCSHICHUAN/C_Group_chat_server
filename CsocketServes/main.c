@@ -46,8 +46,8 @@ int main()
     struct sockaddr_in server_addr;
     bzero(&server_addr,sizeof(struct sockaddr_in));
     server_addr.sin_family=AF_INET;
-    server_addr.sin_addr.s_addr= inet_addr("192.168.0.182"); /* 这里地址使用全0，即所有 */
-    server_addr.sin_port= htons(8081);
+    server_addr.sin_addr.s_addr= INADDR_ANY;//服务器IP地址--允许连接到所有本地地址上
+    server_addr.sin_port= htons(8080);
     if(bind(socketListen, (struct sockaddr *)&server_addr,sizeof(struct sockaddr)) != 0){
         perror("绑定ip地址、端口号失败\n");
         exit(-1);
